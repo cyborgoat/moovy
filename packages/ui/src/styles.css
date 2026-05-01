@@ -1,0 +1,426 @@
+:root {
+  --moovy-color-ink: #11110f;
+  --moovy-color-paper: #f4f1eb;
+  --moovy-color-muted: #6f6a61;
+  --moovy-color-line: rgba(17, 17, 15, 0.14);
+  --moovy-color-glass: rgba(244, 241, 235, 0.78);
+  --moovy-radius: 8px;
+  --moovy-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --moovy-duration: 900ms;
+}
+
+.moovy-zoom-hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  color: var(--moovy-color-paper);
+  background: var(--moovy-color-ink);
+}
+
+.moovy-zoom-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 17, 15, 0.18), rgba(17, 17, 15, 0.72));
+  pointer-events: none;
+}
+
+.moovy-zoom-hero--light::after {
+  background: linear-gradient(180deg, rgba(244, 241, 235, 0.12), rgba(244, 241, 235, 0.7));
+}
+
+.moovy-zoom-hero--none::after {
+  display: none;
+}
+
+.moovy-zoom-hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+}
+
+.moovy-zoom-hero__media--in {
+  animation: moovy-hero-zoom-in 9s var(--moovy-ease) infinite alternate;
+}
+
+.moovy-zoom-hero__media--out {
+  animation: moovy-hero-zoom-out 9s var(--moovy-ease) infinite alternate;
+}
+
+.moovy-zoom-hero__media--pulse {
+  animation: moovy-hero-pulse 11s var(--moovy-ease) infinite alternate;
+}
+
+.moovy-zoom-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 120px 0 64px;
+}
+
+.moovy-zoom-hero h1 {
+  max-width: 880px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 9vw, 156px);
+  font-weight: 400;
+  line-height: 0.92;
+}
+
+.moovy-zoom-hero__eyebrow,
+.moovy-product-showcase__eyebrow {
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+.moovy-zoom-hero__subtitle {
+  max-width: 580px;
+  margin: 24px 0 0;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+}
+
+.moovy-zoom-hero__actions {
+  margin-top: 32px;
+}
+
+.moovy-vertical-marquee {
+  overflow: hidden;
+  height: 1.05em;
+  line-height: 1.05;
+}
+
+.moovy-vertical-marquee__track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  animation-duration: var(--moovy-marquee-duration, 14s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.moovy-vertical-marquee__track--up {
+  animation-name: moovy-marquee-up;
+}
+
+.moovy-vertical-marquee__track--down {
+  animation-name: moovy-marquee-down;
+}
+
+.moovy-vertical-marquee--pause:hover .moovy-vertical-marquee__track {
+  animation-play-state: paused;
+}
+
+.moovy-vertical-marquee--sm {
+  font-size: 20px;
+}
+
+.moovy-vertical-marquee--md {
+  font-size: 36px;
+}
+
+.moovy-vertical-marquee--lg {
+  font-size: 64px;
+}
+
+.moovy-vertical-marquee--display {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(58px, 10vw, 160px);
+}
+
+.moovy-spec-list {
+  margin: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.moovy-spec-list--grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.moovy-spec-list--inline {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.moovy-spec-list__item {
+  padding-top: 16px;
+  border-top: 1px solid var(--moovy-color-line);
+}
+
+.moovy-spec-list dt,
+.moovy-stats-band dt {
+  color: var(--moovy-color-muted);
+  font-size: 13px;
+}
+
+.moovy-spec-list dd,
+.moovy-stats-band dd {
+  margin: 6px 0 0;
+  font-size: 22px;
+}
+
+.moovy-product-showcase,
+.moovy-feature-grid {
+  color: var(--moovy-color-ink);
+  background: var(--moovy-color-paper);
+}
+
+.moovy-product-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(56px, 8vw, 120px) max(20px, calc((100vw - 1180px) / 2));
+}
+
+.moovy-product-showcase h2,
+.moovy-feature-grid h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 6vw, 96px);
+  font-weight: 400;
+  line-height: 0.96;
+}
+
+.moovy-product-showcase__name {
+  margin: 20px 0;
+  font-size: 28px;
+}
+
+.moovy-product-showcase__description {
+  color: var(--moovy-color-muted);
+  line-height: 1.7;
+}
+
+.moovy-product-showcase__media {
+  display: grid;
+  gap: 18px;
+}
+
+.moovy-product-showcase__image,
+.moovy-product-showcase__secondary-image,
+.moovy-image-card img,
+.moovy-feature-grid img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--moovy-radius);
+}
+
+.moovy-product-showcase__image {
+  aspect-ratio: 4 / 3;
+}
+
+.moovy-product-showcase__secondary-image {
+  aspect-ratio: 16 / 7;
+  object-fit: contain;
+  background: #e8e1d4;
+}
+
+.moovy-feature-grid {
+  padding: clamp(56px, 8vw, 120px) max(20px, calc((100vw - 1180px) / 2));
+}
+
+.moovy-feature-grid__items {
+  display: grid;
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.moovy-feature-grid__items--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.moovy-feature-grid__items--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.moovy-feature-grid__items--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.moovy-feature-grid__item {
+  border-top: 1px solid var(--moovy-color-line);
+  padding-top: 22px;
+}
+
+.moovy-feature-grid__item h3,
+.moovy-image-card h3 {
+  margin: 18px 0 10px;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.moovy-feature-grid__item p,
+.moovy-image-card p {
+  color: var(--moovy-color-muted);
+  line-height: 1.65;
+}
+
+.moovy-image-card {
+  overflow: hidden;
+  color: var(--moovy-color-ink);
+  background: var(--moovy-color-paper);
+}
+
+.moovy-image-card__media {
+  overflow: hidden;
+  border-radius: var(--moovy-radius);
+}
+
+.moovy-image-card img {
+  aspect-ratio: 4 / 5;
+  transition: transform var(--moovy-duration) var(--moovy-ease), opacity var(--moovy-duration) var(--moovy-ease);
+}
+
+.moovy-image-card--scale:hover img,
+.moovy-image-card--parallax:hover img {
+  transform: scale(1.06);
+}
+
+.moovy-image-card--fade:hover img {
+  opacity: 0.82;
+}
+
+.moovy-image-card__copy {
+  padding-top: 18px;
+}
+
+.moovy-location-marquee {
+  overflow: hidden;
+  display: grid;
+  gap: 12px;
+  color: var(--moovy-color-ink);
+}
+
+.moovy-location-marquee__row {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.moovy-location-marquee__track {
+  display: inline-flex;
+  gap: clamp(24px, 5vw, 72px);
+  min-width: max-content;
+  animation-duration: var(--moovy-marquee-duration, 28s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.moovy-location-marquee__track--left {
+  animation-name: moovy-marquee-left;
+}
+
+.moovy-location-marquee__track--right {
+  animation-name: moovy-marquee-right;
+}
+
+.moovy-location-marquee span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 6vw, 92px);
+}
+
+.moovy-stats-band {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  color: var(--moovy-color-ink);
+}
+
+.moovy-stats-band__item {
+  border-top: 1px solid var(--moovy-color-line);
+  padding-top: 16px;
+}
+
+@keyframes moovy-hero-zoom-in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes moovy-hero-zoom-out {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes moovy-hero-pulse {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.11);
+  }
+}
+
+@keyframes moovy-marquee-up {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moovy-marquee-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes moovy-marquee-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes moovy-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .moovy-product-showcase,
+  .moovy-feature-grid {
+    padding-inline: 20px;
+  }
+
+  .moovy-product-showcase,
+  .moovy-feature-grid__items,
+  .moovy-feature-grid__items--2,
+  .moovy-feature-grid__items--3,
+  .moovy-feature-grid__items--4,
+  .moovy-stats-band,
+  .moovy-spec-list--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moovy-zoom-hero__media,
+  .moovy-vertical-marquee__track,
+  .moovy-location-marquee__track,
+  .moovy-image-card img {
+    animation: none;
+    transition: none;
+  }
+}
