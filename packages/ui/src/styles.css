@@ -92,50 +92,6 @@
   margin-top: 32px;
 }
 
-.moovy-vertical-marquee {
-  overflow: hidden;
-  height: 1.05em;
-  line-height: 1.05;
-}
-
-.moovy-vertical-marquee__track {
-  display: flex;
-  flex-direction: column;
-  will-change: transform;
-  animation-duration: var(--moovy-marquee-duration, 14s);
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-.moovy-vertical-marquee__track--up {
-  animation-name: moovy-marquee-up;
-}
-
-.moovy-vertical-marquee__track--down {
-  animation-name: moovy-marquee-down;
-}
-
-.moovy-vertical-marquee--pause:hover .moovy-vertical-marquee__track {
-  animation-play-state: paused;
-}
-
-.moovy-vertical-marquee--sm {
-  font-size: 20px;
-}
-
-.moovy-vertical-marquee--md {
-  font-size: 36px;
-}
-
-.moovy-vertical-marquee--lg {
-  font-size: 64px;
-}
-
-.moovy-vertical-marquee--display {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 10vw, 160px);
-}
-
 .moovy-spec-list {
   margin: 0;
   display: grid;
@@ -368,21 +324,6 @@
   }
 }
 
-@keyframes moovy-marquee-up {
-  to {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes moovy-marquee-down {
-  from {
-    transform: translateY(-50%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 @keyframes moovy-marquee-left {
   to {
     transform: translateX(-50%);
@@ -417,7 +358,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .moovy-zoom-hero__media,
-  .moovy-vertical-marquee__track,
   .moovy-location-marquee__track,
   .moovy-image-card img {
     animation: none;

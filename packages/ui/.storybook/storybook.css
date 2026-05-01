@@ -1,3 +1,7 @@
+@import "tailwindcss";
+@source "../src";
+@source ".";
+
 :root {
   --shadcn-docs-ink: #0f172a;
   --shadcn-docs-paper: #fafafa;

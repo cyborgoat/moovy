@@ -19,8 +19,17 @@ import "@moovy/ui/styles.css";
 export function VerticalTextMarqueeExample() {
   return (
     <VerticalTextMarquee
-      items={["Luxury", "Precision", "Freedom", "Global"]}
-      speed={10}
+      items={[
+        "Luxury",
+        "Precision",
+        "Freedom",
+        "Global",
+        "Cinema",
+        "Private",
+        "Altitude",
+        "Velocity",
+      ]}
+      speed={4}
       direction="up"
       pauseOnHover={true}
       size="display"
@@ -64,8 +73,19 @@ Use \`VerticalTextMarquee\` with:
     ),
   ],
   args: {
-    items: ["Luxury", "Precision", "Freedom", "Global"],
-    speed: 10,
+    items: [
+      "Luxury",
+      "Precision",
+      "Freedom",
+      "Global",
+      "Cinema",
+      "Private",
+      "Altitude",
+      "Velocity",
+      "Reserve",
+      "Journey",
+    ],
+    speed: 4,
     direction: "up",
     pauseOnHover: true,
     size: "display",

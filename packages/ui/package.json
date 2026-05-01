@@ -35,11 +35,13 @@
   "devDependencies": {
     "@storybook/addon-docs": "10.3.6",
     "@storybook/react-vite": "10.3.6",
+    "@tailwindcss/vite": "^4.2.4",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "storybook": "10.3.6",
+    "tailwindcss": "^4.2.4",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.0"
