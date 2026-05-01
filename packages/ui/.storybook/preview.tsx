@@ -1,11 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
-import {
-  Controls,
-  Description,
-  Source,
-  Primary,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import { Controls, Description, Primary, Source, Stories, Title } from "@storybook/addon-docs/blocks";
+import { DocsMarkdownViewer } from "./DocsMarkdownViewer";
 import { moovyTheme } from "./moovyTheme";
 import "../src/styles.css";
 import "./storybook.css";
@@ -31,20 +26,29 @@ const preview: Preview = {
     docs: {
       theme: moovyTheme,
       page: () => (
-        <main className="moovy-docs">
-          <section className="moovy-docs__masthead">
+        <main className="shadcn-docs">
+          <section className="shadcn-docs__hero">
             <Title />
             <Description />
           </section>
-          <section className="moovy-docs__preview">
+          <section className="shadcn-docs__panel shadcn-docs__canvas">
             <Primary />
           </section>
-          <section className="moovy-docs__panel">
-            <h2>API</h2>
+          <section className="shadcn-docs__section">
+            <h2 className="shadcn-docs__section-title">Usage</h2>
+            <DocsMarkdownViewer>
+              <Description />
+            </DocsMarkdownViewer>
+          </section>
+          <section className="shadcn-docs__panel">
+            <h2 className="shadcn-docs__section-title">Controls</h2>
             <Controls />
           </section>
-          <section className="moovy-docs__panel">
-            <h2>Code</h2>
+          <section className="shadcn-docs__stories">
+            <Stories includePrimary={false} />
+          </section>
+          <section className="shadcn-docs__source">
+            <h2 className="shadcn-docs__section-title">Code</h2>
             <Source />
           </section>
         </main>

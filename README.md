@@ -5,6 +5,8 @@ React Interactive UI Components
 
 `packages/ui/.storybook` is the Storybook config directory for the UI component library.
 
+The default UI primitive system for this package is now **Radix UI** (`radix-ui`).
+
 From the repository root, run:
 
 ```bash
