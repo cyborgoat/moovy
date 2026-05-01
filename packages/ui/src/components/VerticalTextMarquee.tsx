@@ -12,8 +12,8 @@ type VerticalTextMarqueeProps = {
 export type { VerticalTextMarqueeProps };
 
 const clampIndex = (value: number, length: number) => (value + length) % length;
-const activeItemIndex = 2;
-const visibleOffsets = [-2, -1, 0, 1, 2];
+const activeItemIndex = 3;
+const visibleOffsets = [-3, -2, -1, 0, 1, 2, 3];
 const stepShift = 100 / visibleOffsets.length;
 const getVisualIntensity = (distance: number) => {
   const absoluteDistance = Math.abs(distance);
@@ -26,7 +26,11 @@ const getVisualIntensity = (distance: number) => {
     return 0.5 - (absoluteDistance - 1) * 0.4;
   }
 
-  return 0.1;
+  if (absoluteDistance <= 3) {
+    return 0.1 - (absoluteDistance - 2) * 0.1;
+  }
+
+  return 0;
 };
 
 export function VerticalTextMarquee({
@@ -151,9 +155,9 @@ export function VerticalTextMarquee({
           const visualDistance = index - activeItemIndex + shift / stepShift;
           const intensity = getVisualIntensity(visualDistance);
           const grayscale = (1 - intensity) * 0.45;
-          const shadowOpacity = 0.08 + intensity * 0.16;
-          const shadowBlur = 10 + intensity * 14;
-          const shadowY = 4 + intensity * 12;
+          const shadowOpacity = intensity * 0.24;
+          const shadowBlur = intensity === 0 ? 0 : 10 + intensity * 14;
+          const shadowY = intensity === 0 ? 0 : 4 + intensity * 12;
           const scale = 0.965 + intensity * 0.035;
 
           return (
